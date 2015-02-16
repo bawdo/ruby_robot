@@ -25,7 +25,16 @@ class Robot
   end
 
   def move
-    @x,@y = arena.move_piece(x,y,facing,1)
+    case facing
+    when "NORTH"
+      @x,@y = arena.move_piece_up(x,y,1)
+    when "EAST"
+      @x,@y = arena.move_piece_right(x,y,1)
+    when "SOUTH"
+      @x,@y = arena.move_piece_down(x,y,1)
+    when "WEST"
+      @x,@y = arena.move_piece_left(x,y,1)
+    end
   end
 
 end
