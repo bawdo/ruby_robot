@@ -7,6 +7,19 @@ class TestRobot < Minitest::Test
     @robot = Robot.new
   end
 
+  def test_report_is_ignored_if_place_has_not_been_set
+    assert_equal nil, @robot.report
+  end
+
+  def test_left_and_right_are_ignored_if_place_has_not_been_set
+    assert_equal nil, @robot.left
+    assert_equal nil, @robot.right
+  end
+
+  def test_move_is_ignored_if_place_has_not_been_set
+    assert_equal nil, @robot.move
+  end
+
   def test_place_sets_cartesian_coords_and_facing
     @robot.place(Tabletop.new,5,1,"NORTH")
     assert_equal 5, @robot.x

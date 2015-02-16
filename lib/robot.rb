@@ -11,20 +11,23 @@ class Robot
   end
 
   def report
-    "#{@x},#{@y},#{@facing}"
+    "#{@x},#{@y},#{@facing}" if arena
   end
 
   def left
+    return nil unless arena
     i = FACINGS.find_index(facing)
     @facing = (i == 0 ? FACINGS.last : FACINGS[i - 1])
   end
   
   def right
+    return nil unless arena
     i = FACINGS.find_index(facing)
     @facing = (i == FACINGS.length - 1 ? FACINGS.first : FACINGS[i + 1])
   end
 
   def move
+    return nil unless arena
     case facing
     when "NORTH"
       @x,@y = arena.move_piece(x,y,"UP",1)
