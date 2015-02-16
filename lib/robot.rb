@@ -27,13 +27,13 @@ class Robot
   def move
     case facing
     when "NORTH"
-      @x,@y = arena.move_piece_up(x,y,1)
+      @x,@y = arena.move_piece(x,y,"UP",1)
     when "EAST"
-      @x,@y = arena.move_piece_right(x,y,1)
+      @x,@y = arena.move_piece(x,y,"RIGHT",1)
     when "SOUTH"
-      @x,@y = arena.move_piece_down(x,y,1)
+      @x,@y = arena.move_piece(x,y,"DOWN",1)
     when "WEST"
-      @x,@y = arena.move_piece_left(x,y,1)
+      @x,@y = arena.move_piece(x,y,"LEFT",1)
     end
   end
 
