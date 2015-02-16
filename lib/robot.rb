@@ -1,13 +1,13 @@
 class Robot
+  FACINGS = %w[NORTH EAST SOUTH WEST]
 
-  attr_accessor :x, :y, :facing
-  attr_reader   :range
+  attr_accessor :x, :y, :facing, :arena
 
-  def place(abcissa, ordinate, facing)
-    @x      = abcissa
-    @y      = ordinate
-    @facing = facing
-    @range  = 0..5
+  def place(arena, abcissa, ordinate, facing)
+    @arena  = arena
+    @x      = abcissa  || 0
+    @y      = ordinate || 0
+    @facing = facing   || "NORTH"
   end
 
   def report
@@ -15,57 +15,17 @@ class Robot
   end
 
   def left
-    case facing
-    when "NORTH"
-      @facing = "WEST"
-    when "WEST"
-      @facing = "SOUTH"
-    when "SOUTH"
-      @facing = "EAST"
-    when "EAST"
-      @facing = "NORTH"
-    end
+    i = FACINGS.find_index(facing)
+    @facing = (i == 0 ? FACINGS.last : FACINGS[i - 1])
   end
-
+  
   def right
-    case facing
-    when "NORTH"
-      @facing = "EAST"
-    when "EAST"
-      @facing = "SOUTH"
-    when "SOUTH"
-      @facing = "WEST"
-    when "WEST"
-      @facing = "NORTH"
-    end
+    i = FACINGS.find_index(facing)
+    @facing = (i == FACINGS.length - 1 ? FACINGS.first : FACINGS[i + 1])
   end
 
   def move
-    case facing
-    when "NORTH"
-      next_y = y + 1
-      next_x = x
-    when "SOUTH"
-      next_y = y - 1
-      next_x = x
-    when "EAST"
-      next_x = x + 1
-      next_y = y
-    when "WEST"
-      next_x = x - 1
-      next_y = y
-    end
-    if next_move_is_valid?(next_x,next_y)
-      @x = next_x
-      @y = next_y 
-    end
-    report
-  end
-
-  private
-
-  def next_move_is_valid?(next_x,next_y)
-    range.include?(next_x) && range.include?(next_y)
+    @x,@y = arena.move_piece(x,y,facing,1)
   end
 
 end
