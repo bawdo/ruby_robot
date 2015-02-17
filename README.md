@@ -85,4 +85,5 @@ keith@R731 > irb
   simply lets one know if a move to that location is doable and what would the
   x,y coordinates be if it were.
 
-- Create an example script show casing a Robot moving around a table.
+- Implement another arena. This time a rectangular one that tracks obstacles
+  at various locations on the table and disallows moving to said locations.
