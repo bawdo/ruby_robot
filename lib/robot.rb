@@ -30,13 +30,13 @@ class Robot
     return nil unless arena
     case facing
     when "NORTH"
-      @x,@y = arena.move_piece(x,y,"UP",1)
+      @x,@y = arena.move(x,y,"UP",1)
     when "EAST"
-      @x,@y = arena.move_piece(x,y,"RIGHT",1)
+      @x,@y = arena.move(x,y,"RIGHT",1)
     when "SOUTH"
-      @x,@y = arena.move_piece(x,y,"DOWN",1)
+      @x,@y = arena.move(x,y,"DOWN",1)
     when "WEST"
-      @x,@y = arena.move_piece(x,y,"LEFT",1)
+      @x,@y = arena.move(x,y,"LEFT",1)
     end
   end
 

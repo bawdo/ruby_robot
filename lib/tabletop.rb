@@ -10,7 +10,7 @@ class Tabletop
     range.include?(x) && range.include?(y)
   end
 
-  def move_piece(from_x,from_y,direction_of_travel,distance_to_travel = 1)
+  def move(from_x,from_y,direction_of_travel,distance_to_travel = 1)
     case direction_of_travel
     when "UP"
       to_y = from_y + distance_to_travel
