@@ -1,5 +1,5 @@
 # Overview
-A simply robot that you can move around on a tabletop.
+A simple robot that you can move around on a tabletop.
 
 ## Usage
 
