@@ -27,6 +27,12 @@ class TestRobot < Minitest::Test
     assert_equal "NORTH", @robot.facing
   end
 
+  def test_placing_off_the_arena_is_not_possible
+    assert_equal nil, @robot.place(Tabletop.new,6,6,"NORTH")
+    assert_equal nil, @robot.place(Tabletop.new,0,6,"NORTH")
+    assert_equal nil, @robot.place(Tabletop.new,6,0,"NORTH")
+  end
+
   def test_report_returns_current_cartesian_coords_and_facing
     @robot.place(Tabletop.new,5,1,"NORTH")
     assert_equal "5,1,NORTH", @robot.report

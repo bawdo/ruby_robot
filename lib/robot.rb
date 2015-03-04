@@ -4,6 +4,7 @@ class Robot
   attr_accessor :x, :y, :facing, :arena
 
   def place(arena, abcissa, ordinate, facing)
+    return nil unless arena.valid_point?(abcissa,ordinate)
     @arena  = arena
     @x      = abcissa
     @y      = ordinate
