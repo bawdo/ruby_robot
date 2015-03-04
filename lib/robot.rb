@@ -5,9 +5,9 @@ class Robot
 
   def place(arena, abcissa, ordinate, facing)
     @arena  = arena
-    @x      = abcissa  || 0
-    @y      = ordinate || 0
-    @facing = facing   || "NORTH"
+    @x      = abcissa
+    @y      = ordinate
+    @facing = facing
   end
 
   def report
